@@ -56,21 +56,12 @@ export class AppComponent {
   }
 
   public blur(type: FormNameType) {
-    if (type == 'username') {
-      this.touched.username = true;
-    } else if (type == 'password') {
-      this.touched.password = true;
-    }
+    this.touched[type] = true;
   }
 
   public validateInput(val: string, type: FormNameType) {
-    if (type == 'username') {
-      if (val.length > 1) this.valid.username = true;
-      else this.valid.username = false;
-    } else if (type == 'password') {
-      if (val.length > 1) this.valid.password = true;
-      else this.valid.password = false;
-    }
+    if (val.length > 1) this.valid[type] = true;
+    else this.valid[type] = false;
   }
 
   public handleError(error: HttpErrorResponse) {
