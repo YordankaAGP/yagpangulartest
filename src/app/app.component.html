@@ -2,13 +2,13 @@
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <input id="username" name="username" type="text" class="form-control" placeholder="Budi123" [(ngModel)]="user.username" (ngModelChange)="validateInput($event, 'username')" >
-            <div class="invalid-feedback" style="margin-bottom: 10px;" *ngIf="!valid.username && isSubmit">
+            <input id="username" name="username" type="text" class="form-control" placeholder="Budi123" (blur)="blur('username')" [(ngModel)]="user.username" (ngModelChange)="validateInput($event, 'username')" >
+            <div style="margin-bottom: 10px;color: red" *ngIf="!valid.username && touched.username">
                 Username tidak boleh kosong!
             </div>
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" class="form-control" placeholder="Budi@12345" [(ngModel)]="user.password" (ngModelChange)="validateInput($event, 'password')" >
-            <div class="invalid-feedback" style="margin-bottom: 10px;" *ngIf="!valid.username && isSubmit">
+            <input id="password" name="password" type="password" class="form-control" placeholder="Budi@12345"  (blur)="blur('password')" [(ngModel)]="user.password" (ngModelChange)="validateInput($event, 'password')" >
+            <div style="margin-bottom: 10px;color: red" *ngIf="!valid.password && touched.password">
                 Password tidak boleh kosong!
             </div>
             <button type="submit" class="btn btn-primary" (click)="login()">

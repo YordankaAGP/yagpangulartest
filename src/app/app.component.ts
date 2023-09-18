@@ -15,6 +15,7 @@ export class AppComponent {
   isSubmit: boolean = false;
   user: Auth;
   valid: { username: boolean; password: boolean };
+  touched: { username: boolean; password: boolean };
 
   constructor(private authService: AuthService) {
     this.user = {
@@ -22,6 +23,10 @@ export class AppComponent {
       password: '',
     };
     this.valid = {
+      username: false,
+      password: false,
+    };
+    this.touched = {
       username: false,
       password: false,
     };
@@ -48,6 +53,14 @@ export class AppComponent {
           this.isSubmit = false;
         }
       );
+  }
+
+  public blur(type: FormNameType) {
+    if (type == 'username') {
+      this.touched.username = true;
+    } else if (type == 'password') {
+      this.touched.password = true;
+    }
   }
 
   public validateInput(val: string, type: FormNameType) {
